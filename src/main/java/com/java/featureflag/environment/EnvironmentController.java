@@ -31,14 +31,8 @@ public class EnvironmentController {
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/environment/{id}")
-    public ResponseEntity<Environment> updateEnvironment(@RequestBody Environment environment, @PathVariable Long id){
-        Environment environment1 = environmentRepository.findById(id).orElseThrow(() -> new RuntimeException("not found!"));
-        environment1.setId(environment.getId());
-        environment1.setName(environment.getName());
-        environment1.setOwnerId(environment.getOwnerId());
-
-        Environment updatedEnvi = environmentRepository.save(environment1);
-        return ResponseEntity.ok(updatedEnvi);
+    public void  updateEnvironment(@RequestBody Environment environment, @PathVariable Long id){
+        environmentService.updateEnvironment(id, environment);
     }
 
     @DeleteMapping("/environment/{id}")

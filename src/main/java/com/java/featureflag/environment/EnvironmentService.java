@@ -29,7 +29,8 @@ public class EnvironmentService {
         environmentRepository.deleteById(id);
     }
 
-    public void updateEnvironment(Long id) {
-        environmentRepository.save(id);
+
+    public void updateEnvironment(Long id, Environment environment) {
+        environmentRepository.save(environment);
     }
 }
